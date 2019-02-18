@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IndraCoreModule } from 'src/indra-core';
+import { IndraCoreModule, LoggerService } from 'src/indra-core';
 import { ClientesModule } from './clientes/clientes.module';
 import { AppCommonModule } from './app-common/app-common.module';
 
@@ -17,7 +17,7 @@ import { AppCommonModule } from './app-common/app-common.module';
     IndraCoreModule, ClientesModule, AppCommonModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [LoggerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
