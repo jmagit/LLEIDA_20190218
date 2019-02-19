@@ -27,6 +27,7 @@ export class NotificationService {
   constructor(private out: LoggerService) { }
 
   public get Listado() { return Object.assign([], this.listado); }
+  public get HayNotificaciones() { return this.listado.length > 0; }
 
   public add(msg: string, type: NotificationType = NotificationType.error): void {
     if (!msg) {
