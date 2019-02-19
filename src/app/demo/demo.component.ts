@@ -19,7 +19,7 @@ export class DemoComponent implements OnInit {
   resultado: string = null;
   visible = true;
   estetica = { importante: true, urgente: true, error: false };
-  size = 12;
+  fontSize = 12;
 
   constructor(public notify: NotificationService) { }
 
