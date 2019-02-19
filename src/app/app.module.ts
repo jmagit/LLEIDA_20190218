@@ -4,9 +4,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IndraCoreModule, LoggerService } from 'src/indra-core';
+import { IndraCoreModule, LoggerService, ERROR_LEVEL } from 'src/indra-core';
 import { ClientesModule } from './clientes/clientes.module';
 import { AppCommonModule } from './app-common/app-common.module';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -15,9 +16,12 @@ import { AppCommonModule } from './app-common/app-common.module';
   imports: [
     BrowserModule, FormsModule,
     IndraCoreModule, ClientesModule, AppCommonModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
-  providers: [LoggerService],
+  providers: [
+    LoggerService,
+    {provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
