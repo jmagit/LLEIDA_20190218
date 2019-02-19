@@ -1,13 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { NotificationService } from '../app-common/notification.service';
 
+@Injectable({
+  providedIn: 'root'
+})
+export class MemoService {
+  _nombre = 'mundo';
+  get nombre() {
+    if (localStorage && localStorage['memo.nombre']) {
+      this._nombre = localStorage['memo.nombre'];
+    }
+    return this._nombre;
+  }
+  set nombre(value: string) {
+    this._nombre = value;
+    if (localStorage) {
+      localStorage['memo.nombre'] = this._nombre;
+    }
+  }
+}
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.css']
 })
 export class DemoComponent implements OnInit {
-  nombre = 'mundo';
   listado = [
     {id: 1, nombre: 'Madrid'},
     {id: 2, nombre: 'BARCELONA'},
@@ -21,16 +38,16 @@ export class DemoComponent implements OnInit {
   estetica = { importante: true, urgente: true, error: false };
   fontSize = 12;
 
-  constructor(public notify: NotificationService) { }
+  constructor(public notify: NotificationService, public memo: MemoService) { }
 
   ngOnInit() {
   }
 
   saluda() {
-    this.resultado = `Hola ${this.nombre}`;
+    this.resultado = `Hola ${this.memo.nombre}`;
   }
   despide() {
-    this.resultado = `Adios ${this.nombre}`;
+    this.resultado = `Adios ${this.memo.nombre}`;
   }
   di(algo: string) {
     this.resultado = `Dice ${algo}`;
