@@ -3,18 +3,20 @@ import { HomeComponent } from '../home/home.component';
 import { DemoComponent } from '../demo/demo.component';
 import { LoggerService } from 'src/indra-core';
 import { CalculadoraComponent } from '../calculadora/calculadora.component';
+import { PersonasComponent } from '../personas/personas.component';
 
 @Component({
   selector: 'app-dinamico',
   templateUrl: './dinamico.component.html',
   styleUrls: ['./dinamico.component.css'],
-  entryComponents: [ HomeComponent, DemoComponent, CalculadoraComponent, ]
+  entryComponents: [ HomeComponent, DemoComponent, CalculadoraComponent, PersonasComponent, ]
 })
 export class DinamicoComponent implements OnInit {
   menu = [
+    {texto: 'Personas', componente: PersonasComponent },
+    {texto: 'Inicio', componente: HomeComponent },
     {texto: 'Demo', componente: DemoComponent },
     {texto: 'Calculadora', componente: CalculadoraComponent },
-    {texto: 'Inicio', componente: HomeComponent },
   ];
   seleccionado = this.menu[0].componente;
 
