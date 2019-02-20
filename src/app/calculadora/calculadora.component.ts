@@ -18,7 +18,7 @@ export class CalculadoraComponent implements OnInit, OnChanges {
   private resumen: string = '';
 
   @Input() private init: string;
-  @Output() updated: EventEmitter<any> = new EventEmitter();
+  @Output() private updated: EventEmitter<any> = new EventEmitter();
   private separadorDecimal: string = '.';
 
   constructor(private out: LoggerService) { }
@@ -134,13 +134,13 @@ export class CalculadoraComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    if (this.init) {
-      this.ponOperando(this.init);
-    }
-  }
-  ngOnChanges(changes: SimpleChanges): void {
     // if (this.init) {
     //   this.ponOperando(this.init);
     // }
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.init) {
+      this.ponOperando(this.init);
+    }
   }
 }
