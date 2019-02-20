@@ -27,8 +27,8 @@ export class PersonasViewModelService {
         {id: 3, nombre: 'Pedro', apellidos: 'Pica Piedra', edad: 55},
         {id: 4, nombre: 'Pablo', apellidos: 'Marmol', edad: 49},
       ];
-      this.modo = 'list';
     }
+    this.modo = 'list';
   }
   public add() {
     this.elemento = {};
