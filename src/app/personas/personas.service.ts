@@ -3,6 +3,7 @@ import { ModoCRUD } from '../code-base/tipos';
 import { NotificationService } from '../app-common/notification.service';
 import { RESTDAOService } from '../code-base/dao';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,10 @@ export class PersonasViewModelDAOService {
   protected listado: Array<any> = null;
   protected elemento: any = {};
   protected idOriginal: any = null;
+  protected urlList = '/personas';
 
-  constructor(protected notify: NotificationService, protected dao: PersonasDaoService) { }
+  constructor(protected notify: NotificationService,
+    protected dao: PersonasDaoService, private router: Router) { }
 
   public get Listado() { return this.listado; }
   public get Modo() { return this.modo; }
@@ -68,7 +71,8 @@ export class PersonasViewModelDAOService {
   public cancel() {
     this.elemento = {};
     this.idOriginal = null;
-    this.list();
+    // this.list();
+    this.router.navigateByUrl(this.urlList);
   }
   public send() {
     switch (this.modo) {
