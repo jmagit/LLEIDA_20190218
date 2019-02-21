@@ -19,6 +19,8 @@ import { NotificationComponent } from './notification/notification.component';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { PERSONAS_COMPONENT } from './personas/personas.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PersonasViewModelService, PersonasViewModelDAOService } from './personas/personas.service';
 
 @NgModule({
   declarations: [
@@ -31,13 +33,14 @@ import { PERSONAS_COMPONENT } from './personas/personas.component';
     PERSONAS_COMPONENT,
   ],
   imports: [
-    BrowserModule, FormsModule,
+    BrowserModule, FormsModule, HttpClientModule,
     IndraCoreModule, ClientesModule, AppCommonModule,
     AppRoutingModule,
   ],
   providers: [
     LoggerService,
-    {provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL}
+    {provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL},
+    {provide: PersonasViewModelService, useClass: PersonasViewModelDAOService},
   ],
   bootstrap: [AppComponent]
 })
